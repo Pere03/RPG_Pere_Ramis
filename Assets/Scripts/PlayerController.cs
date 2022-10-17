@@ -15,6 +15,13 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody2D _rigidbody;
 
+    public static bool playerCreated;
+
+    private void Start()
+    {
+        playerCreated = true;
+    }
+
     private void Awake()
     {
         _animator = GetComponent<Animator>();
@@ -29,7 +36,7 @@ public class PlayerController : MonoBehaviour
 
         if (Mathf.Abs(xInput) > inputTol)
         {
-            _rigidbody.velocity = new Vector2(xInput * speed, _rigidbody.velocity.y);
+            _rigidbody.velocity = new Vector2(xInput * speed, 0);
             isWalking = true;
             lastDirection = new Vector2(xInput, y: 0);
         }
@@ -37,7 +44,7 @@ public class PlayerController : MonoBehaviour
        
         if (Mathf.Abs(yInput) > inputTol)
         {
-            _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, yInput * speed);
+            _rigidbody.velocity = new Vector2(0, yInput * speed);
             isWalking = true;
             lastDirection = new Vector2(0, yInput);
         }
