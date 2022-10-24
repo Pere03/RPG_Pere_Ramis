@@ -11,6 +11,8 @@ public class GoToScene : MonoBehaviour
 
     private bool manualEnter;
 
+    public string uuid;
+
     void Update()
     {
         if (!isAutomatic && !manualEnter)
@@ -21,21 +23,40 @@ public class GoToScene : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        /*
         if (other.name == "Player")
         {
             if (isAutomatic)
             {
                 SceneManager.LoadScene(sceneName);
             }
-        } 
+        }
+        */
+        Teleport(other.name);
     }
 
     private void OnTriggerStay2D(Collider2D other)
     {
+        /*
         if(other.name == "Player")
         {
             if(!isAutomatic && manualEnter)
             {
+                SceneManager.LoadScene(sceneName);
+            }
+        }
+        */
+
+        Teleport(other.name);
+    }
+
+    public void Teleport (string objName)
+    {
+        if (objName == "Player")
+        {
+            if (isAutomatic || (!isAutomatic && manualEnter))
+            {
+                FindObjectOfType<PlayerController>().nextUuid = uuid;
                 SceneManager.LoadScene(sceneName);
             }
         }

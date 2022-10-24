@@ -17,6 +17,8 @@ public class PlayerController : MonoBehaviour
 
     public static bool playerCreated;
 
+    public string nextUuid;
+
     private void Start()
     {
         playerCreated = true;
