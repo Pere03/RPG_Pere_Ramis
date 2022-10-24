@@ -21,8 +21,11 @@ public class StartPoint : MonoBehaviour
         player.transform.position = transform.position;
 
         player.lastDirection = facingDirection;
-
-        
+        GameObject confiner = GameObject.Find("Confiner");
+        if (confiner != null)
+        {
+            //GetComponent<CinemachineConfiner2D>().#CinemachineConfiner2D;
+        }
     }
 
     // Update is called once per frame
