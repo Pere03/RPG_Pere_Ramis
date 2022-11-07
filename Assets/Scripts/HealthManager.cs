@@ -6,7 +6,6 @@ public class HealthManager : MonoBehaviour
 {
     public int maxHealth = 100;
     private int currentHealth;
-    public int damage = 1;
 
     void Start()
     {
