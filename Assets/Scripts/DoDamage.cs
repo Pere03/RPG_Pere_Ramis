@@ -8,14 +8,13 @@ public class DoDamage : MonoBehaviour
     private float timeRevivalCounter;
     private bool isPlayerReviving;
     private GameObject player;
-    public int damage = 10;
+    public int damage = 10;                                                     
 
     void Start()
     {
         
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (isPlayerReviving)
