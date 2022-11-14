@@ -6,9 +6,11 @@ public class WeaponDamage : MonoBehaviour
 {
     public int damage;
 
+    public GameObject bloodParticle;
+    private GameObject hitPoint;
     void Start()
     {
-        
+        hitPoint = transform.Find("Hit Point").gameObject;
     }
 
     // Update is called once per frame
@@ -22,6 +24,11 @@ public class WeaponDamage : MonoBehaviour
         {
             other.gameObject.GetComponent<HealthManager>().
             DamageCharacter(damage);
+
+            if (bloodParticle != null && hitPoint != null)
+            {
+                Destroy (Instantiate(bloodParticle, hitPoint.transform.position, hitPoint.transform.rotation), 1.5f);
+            }
         }
     }
 }

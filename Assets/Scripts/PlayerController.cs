@@ -19,6 +19,10 @@ public class PlayerController : MonoBehaviour
 
     public string nextUuid;
 
+    private bool isAttacking;
+    [SerializeField] private float attackTime;
+    private float attackTimeCounter;
+
     private void Start()
     {
         playerCreated = true;
@@ -35,6 +39,20 @@ public class PlayerController : MonoBehaviour
         xInput = Input.GetAxisRaw(HORIZONTAL);
         yInput = Input.GetAxisRaw(VERTICAL);
         isWalking = false;
+
+        if (isAttacking)
+        {
+            attackTimeCounter -= Time.deltaTime;
+            if (attackTimeCounter < 0)
+            {
+                isAttacking = false;
+            }
+        }
+        else if (Input.GetMouseButtonDown(0))
+        {
+            isAttacking = true;
+            attackTimeCounter = attackTime;
+        }
 
         if (Mathf.Abs(xInput) > inputTol)
         {
@@ -54,7 +72,7 @@ public class PlayerController : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (!isWalking)
+        if (!isWalking || isAttacking)
         {
             _rigidbody.velocity = new Vector2(0, 0); //_rigidbody.velocity = Vector2.zero
         }
@@ -63,6 +81,9 @@ public class PlayerController : MonoBehaviour
         _animator.SetFloat("LastHorizontal", lastDirection.x);
         _animator.SetFloat("LastVertical", lastDirection.y);
         _animator.SetBool("IsWalking", isWalking);
+
+        _animator.SetBool("IsAtacking", isAttacking);
+
     }
 
 }
