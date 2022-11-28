@@ -23,9 +23,15 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float attackTime;
     private float attackTimeCounter;
 
+    public bool canMove = true;
+
+    public bool isTalking;
+
     private void Start()
     {
         playerCreated = true;
+        lastDirection = Vector2.down;
+        isTalking = false;
     }
 
     private void Awake()
@@ -67,6 +73,18 @@ public class PlayerController : MonoBehaviour
             _rigidbody.velocity = new Vector2(0, yInput * speed);
             isWalking = true;
             lastDirection = new Vector2(0, yInput);
+        }
+
+        if (!canMove)
+        {
+            return;
+        }
+
+
+        if (isTalking)
+        {
+            _rigidbody.velocity = Vector2.zero;
+            return;
         }
     }
 

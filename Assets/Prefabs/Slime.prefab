@@ -181,7 +181,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5aa4c6416f5c73548ac8bd26e7aac4cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeToRevivePlayer: 0
+  timeToRevivePlayer: 2
   damage: 10
 --- !u!114 &5815889606250167673
 MonoBehaviour:
@@ -196,3 +196,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 10
+  isBlinking: 0
+  blinkingDuration: 0
+  expWhenDefeated: 15

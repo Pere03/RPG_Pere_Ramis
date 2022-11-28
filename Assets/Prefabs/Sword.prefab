@@ -125,3 +125,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 15
+  bloodParticle: {fileID: 4920495463015163697, guid: 44f66d2afa4f0fc4a8d6805beba989c9, type: 3}
+  canvasDamageNumber: {fileID: 4247275678884095977, guid: 184fc27cddad903429602983c81cc5b9, type: 3}

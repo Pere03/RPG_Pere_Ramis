@@ -8,6 +8,8 @@ public class WeaponDamage : MonoBehaviour
 
     public GameObject bloodParticle;
     private GameObject hitPoint;
+    public GameObject canvasDamageNumber;
+    public int index;
     void Start()
     {
         hitPoint = transform.Find("Hit Point").gameObject;
@@ -27,8 +29,12 @@ public class WeaponDamage : MonoBehaviour
 
             if (bloodParticle != null && hitPoint != null)
             {
-                Destroy (Instantiate(bloodParticle, hitPoint.transform.position, hitPoint.transform.rotation), 1.5f);
+                Instantiate(bloodParticle, hitPoint.transform.position, hitPoint.transform.rotation);
             }
+
+            GameObject canvas = Instantiate(canvasDamageNumber, hitPoint.transform.position, Quaternion.identity);
+
+            canvas.GetComponent<DamageNumber>().damagePoints = damage;
         }
     }
 }
